@@ -1,4 +1,4 @@
-Project Objective
+                                                     Project Objective
 within this project i wanted to analyse how accurately and consistently a monte carlo simulation can price a european call option when u have set option parameters,
 and also how the number of simulations that are ran can affect its consistancy. and to check its accuracy we compared it to a black scholes theoretical price 
 which we got from the option parameters. this project had the aim of answering 3 questions: 
