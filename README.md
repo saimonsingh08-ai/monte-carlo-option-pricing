@@ -26,8 +26,7 @@ M = 100_000 # Number of simulated paths
 
 generally the model found that increasing the number of simulations ran decreased the sampling error and variability making the results more stable and
 consistent since there was a lower chance for individual random results to greatly affect the overall trend. however increasing the number of simulations 
-does not always decrease the absolute error since individual simulations can greatly fluctuate and impact the end option price therefore not always 
-guaranteeing a decrease in absolute error however the averages can still show difference from the benchmark due to randomness. ps the model simulates stock 
+does not always decrease the absolute error since the averages can still show difference from the benchmark due to randomness. ps the model simulates stock 
 prices to estimate the option price, it does not predict the price of the stock itself
 
     model aassumptions and limitations 
@@ -42,9 +41,10 @@ path
 changes without sudden jumps, this is an important limitation of this model since 
 its a model that simplifies what an actual market would run like. it is important to note that in this project i did not take into account the 
 possibility of the volatility and the risk free interest rate changing as time progresses, whereas in reality the risk free interest rate
-could change in a real market due to desicions made by the bank of england and volatility can also change dependant on choices made by those that run the company
+could change in a real market due to decisions made by the bank of england and volatility can also change dependant on economic uncertainty
+and company news suchas the company gaining bad reputation for something they have done.
 
-Why did i use the black scholes as the benchmark?
+    Why did i use the black scholes as the benchmark?
 
 it is to check whether the simulation works, the black scholes model factors in all of the stock option parameters and it gives an analytical theoretical price
 using the black scholes call pricing formula it is not a guess but a theoretical price which is derived using a mathematical formula under the option parameters. 
