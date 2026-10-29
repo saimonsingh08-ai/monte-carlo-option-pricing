@@ -27,26 +27,30 @@ M = 100_000 # Number of simulated paths
 generally the model found that increasing the number of simulations ran decreased the sampling error and variability making the results more stable and
 consistent since there was a lower chance for individual random results to greatly affect the overall trend. however increasing the number of simulations 
 does not always decrease the absolute error since individual simulations can greatly fluctuate and impact the end option price therefore not always 
-guaranteeing a decrease in absolute error. ps the model simulates stock prices to estimate the option price, it does not predict the price of the stock itself
+guaranteeing a decrease in absolute error however the averages can still show difference from the benchmark due to randomness. ps the model simulates stock 
+prices to estimate the option price, it does not predict the price of the stock itself
 
     model aassumptions and limitations 
 
-limitations of this model are that the geometric brownian motion assumes the system to be normally distributed therefore a real market is not accurately
+limitations of this model are that the geometric brownian motion assumes the random shocks to be normally distributed therefore a real market is not accurately
 replicated since in a normal distribution most values are around 0 however in a real market large price gaps can occur more frequently than a normal distribution
-can predict. and another limitation of the GBM being the every new shock is independant of previous shocks, meaning if the market is on the rise today it does 
-not guarantee a rise tomorrow whereas real markets show behaviours such as volatility clustering where an large movement one day can be followed with 
-another large movement and small movements are followed by other small movements furthermore the GBM is not able to show large jumps. within real markets 
-certain anouncements from a company or events can show large temporary jumps but since the GBM generates continous stock paths meaning the stock path 
+can predict therefore the shocks may not be representative of something that would occur in a real market. and another limitation of the GBM being the every new 
+shock is independant of previous shocks, whereas real markets show behaviours such as volatility clustering where an large movement one day can be followed with 
+another large movement and small movements are often followed by other small movements thus the GBM is not able to show large jumps. within real markets 
+certain anouncements from a company or events can show large temporary jumps in option price but since the GBM generates continous stock paths meaning the stock 
+path 
 changes without sudden jumps, this is an important limitation of this model since 
-its a model that simplifies what an actual market would run like. however it is important to note that in this project i did not take into account the possibility of the volatility and the risk free interest 
-rate changing as time progresses
+its a model that simplifies what an actual market would run like. it is important to note that in this project i did not take into account the 
+possibility of the volatility and the risk free interest rate changing as time progresses, whereas in reality the risk free interest rate
+could change in a real market due to desicions made by the bank of england and volatility can also change dependant on choices made by those that run the company
 
 Why did i use the black scholes as the benchmark?
 
 it is to check whether the simulation works, the black scholes model factors in all of the stock option parameters and it gives an analytical theoretical price
 using the black scholes call pricing formula it is not a guess but a theoretical price which is derived using a mathematical formula under the option parameters. 
 this price is not guaranteed if ran in reality, instead it is a theoretical estimate made using the model 
-assumptions. and it is used to compare against the monte carlo simulation and check for the models accuracy.  i am going to do the convergence part seperately 
+assumptions. and it is used to compare against the monte carlo simulation and check for the models accuracy, if the 2 show a large absolute error even after 
+greatly increasing the simulation count it may be indicative of a mathematical/coding/calculation error.
  
     Monte carlo convergence.
 
