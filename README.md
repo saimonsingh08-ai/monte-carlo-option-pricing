@@ -5,31 +5,36 @@ which we got from the option parameters. this project had the aim of answering 3
 1. how does increasing the number of simulations affect the accuracy and consistency of the estimate we get from the monte carlo simulation?
 2. how closely can the estimate from the monte carlo simulation reach the black scholes theoretical option price of £10.4506
 3. how and why the simulation acts the way it does. i explored how the geometric brownian motion generates possible stock option price path and how
- randomness can affect the final estimate.
+ randomness can affect the final estimate
 
-                                                        Conclusion
-the main result i came to was that, the monte carlo simulation can accurately predict the option price when compared to its black scholes benchmark of £10.4506 under the models assumptions where
+        1.the mathematical background and methodology
+       1.1 modelling stock prices using the Geometric Brownian Motion
+       why stock prices are modelled are random processes and how, talk abt gbm and random shocks sigmasqrtdeltat times Z the gbm differential equation, whole thing where the gbm is in my code, and why we usedelta t and sqrrt delta t, explain Z
+       1.2 Discretising time and simulating stock paths EXPLAIN WHY n=252 and why we do t/n  and how the code finds the stock price at the next time step using the current tiime step stock price
+       1.3 european call options and risk neutral pricing what the models tryna price and why future payoffs are discountwd, talk about the option parameters, talk abt volatility, risk neauteral pricing, and why we use r
+       1.4 monte carlo estimation and sampling error Explain how the individual discounted payoffs are combined to produce one estimated option price.
+        NOTE TO MYSELF USE CHATGPT TO UNDERSTAND WHAT IS MEANT BY 1.4 AND 1.5 AFTER CAUSE I HAVE NO IDEA
+        Include:
+        - The sample mean of the discounted payoffs.
+        - Why more simulations generally improve precision.
+        - Standard error and its \(1/\sqrt{M}\) relationship.
+        - The difference between standard error and absolute error.
+        This provides the mathematical foundation for Graphs 2 and 3.
+       1.5 black scholes theoretical price and benchmark
+           Explain the analytical pricing formula and how you obtain the theoretical price of £10.4506.
 
-S0 = 100 # Current stock price (£)
+        Include:
+        - The Black–Scholes call pricing formula.
+        - The meaning of its components.
+        - The option parameters used to calculate the benchmark.
+        - Why it provides a comparison for the Monte Carlo estimate.
 
-K = 100 # Strike price (£)
+        CHECK THE BOOK WHEN GOING THROUGH 1.1, 1.2,1.3,1.5
 
-T = 1.0 # Time to expiry (years)
+       
+                                                        
 
-r = 0.05 # Risk-free interest rate (5%)
-
-sigma = 0.20 # Annual volatility (20%)
-
-N = 252 # Trading-time steps per year
-
-M = 100_000 # Number of simulated paths
-
-generally the model found that increasing the number of simulations ran decreased the sampling error and variability making the results more stable and
-consistent since there was a lower chance for individual random results to greatly affect the overall trend. however increasing the number of simulations 
-does not always decrease the absolute error since the averages can still show difference from the benchmark due to randomness. ps the model simulates stock 
-prices to estimate the option price, it does not predict the price of the stock itself
-
-    model aassumptions and limitations 
+        model aassumptions and limitations 
 
 limitations of this model are that the geometric brownian motion assumes the random shocks to be normally distributed therefore a real market is not accurately
 replicated since in a normal distribution most values are around 0 however in a real market large price gaps can occur more frequently than a normal distribution
@@ -55,10 +60,9 @@ greatly increasing the simulation count it may be indicative of a mathematical/c
     Monte carlo convergence.
 
 if the generated outcomes converge to a completely different value and the absolute difference does not show an overall trend of decrease in terms of absolute 
-differences the values could converge to another theoretical price showing consistency however if the value is not around 10.4506 we would know that the model
-contains a mathematical or coding error, however since their model assumptions are the same the generated outcomes should converge to the theoretical option price unless there is a issue 
-within the 
-coding or the mathematics, this is only the case if we consistently get results which deviate from the benchmark.
+differences the values could converge to another theoretical price showing consistency however if the estimated value is consistently not near the benchmark of 
+10.4506 there may be an indication that a maths/code error is present, however since their model assumptions are the same the generated outcomes should converge 
+to the theoretical option price.
 it is also important to notice that randomness plays a part within the monte carlo simulation, you can run the same program with the same option parameters and same number or simulations ran
 but get a different value and that is simply because the monte carlo simulation generates the estimate using randomly generated outcomes increasing the number of
 simulations generally reduces sampling error however running more simulations cause individual random outcomes to have less of an affect on the estimate
@@ -69,4 +73,26 @@ Under the usual assumptions, the standard error decreases approximately in propo
 where M is the number of simulations.
 This means that multiplying the simulation count by 100 reduces the standard error by a factor of approximately 10, assuming the underlying payoff variance 
 remains the same. It does not mean the absolute error must decrease by a factor of 10, or even decrease at all in every individual run. and furthermore to
-reduce the chance of random error we have ran each simulation at each count multiple times, i.e. i have ran the simulations for 1000, 10K..... multiple times check it now, are we missing any vital information is there anything else we can add, or anything we can change to this to link it back to the original questions or is there no need to do that
+further investigate the consistency we have ran each simulation at each count multiple times, i.e. i have ran the simulations for 1000, 10K..... multiple times check it now, are we missing any vital information is there anything else we can add, or anything we can change to this to link it back to the original questions or is there no need to do that
+
+     Conclusion
+the main result i came to was that, the monte carlo simulation can accurately predict the option price when compared to its black scholes benchmark of £10.4506 under the models assumptions which where
+
+S0 = 100 # Current stock price (£)
+
+K = 100 # Strike price (£)
+
+T = 1.0 # Time to expiry (years)
+
+r = 0.05 # Risk-free interest rate (5%)
+
+sigma = 0.20 # Annual volatility (20%)
+
+N = 252 # Trading-time steps per year
+
+M = 100_000 # Number of simulated paths
+
+generally the model found that increasing the number of simulations ran decreased the sampling error and variability making the results more stable and
+consistent since there was a lower chance for individual random results to greatly affect the overall trend. however increasing the number of simulations 
+does not always decrease the absolute error since the averages can still show difference from the benchmark due to randomness. ps the model simulates stock 
+prices to estimate the option price, it does not predict the price of the stock itself
