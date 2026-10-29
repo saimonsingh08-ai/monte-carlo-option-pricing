@@ -69,4 +69,4 @@ Under the usual assumptions, the standard error decreases approximately in propo
 where M is the number of simulations.
 This means that multiplying the simulation count by 100 reduces the standard error by a factor of approximately 10, assuming the underlying payoff variance 
 remains the same. It does not mean the absolute error must decrease by a factor of 10, or even decrease at all in every individual run. and furthermore to
-reduce the chance of random error we have ran each simulation at each count multiple times, i.e. i have ran the simulations for 1000, 10K..... multiple times check it now
+reduce the chance of random error we have ran each simulation at each count multiple times, i.e. i have ran the simulations for 1000, 10K..... multiple times check it now, are we missing any vital information is there anything else we can add, or anything we can change to this to link it back to the original questions or is there no need to do that
