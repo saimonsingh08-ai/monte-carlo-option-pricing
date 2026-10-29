@@ -2,8 +2,8 @@
 within this project i wanted to analyse how accurately and consistently a monte carlo simulation can price a european call option when u have set option parameters,
 and also how the number of simulations that are ran can affect its consistancy. and to check its accuracy we compared it to a black scholes theoretical price 
 which we got from the option parameters. this project had the aim of answering 3 questions: 
-1. how does increasing the number of simulations affect the accuracy of the theoretical price we get from the monte carlo simulation?
-2. how accurately can a monte carlo simulation estimate an option price? compared against a black scholes theoretical price of £10.4506
+1. how does increasing the number of simulations affect the accuracy and consistency of the estimate we get from the monte carlo simulation?
+2. how close can a monte carlo estimate reach the theoretical option price set by the black scholes model of £10.4506?
 3. how and why the simulation acts the way it does. i explored how the geometric brownian motion generates possible stock option price path and how
  randomness can affect the final estimate.
 
