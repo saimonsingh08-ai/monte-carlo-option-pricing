@@ -56,14 +56,15 @@ greatly increasing the simulation count it may be indicative of a mathematical/c
 
 if the generated outcomes converge to a completely different value and the absolute difference does not show an overall trend of decrease in terms of absolute 
 differences. the values could converge to another theoretical price showing consistency however if the value is not around 10.4506 we would know that the model
-lacks accuracy. both the black scholes benchmark and the monte carlo simulation ran under the same assumptions. it is also important to notice
-that randomness plays a part within the monte carlo simulation, you can run the same program with the same option parameters and same number or simulations ran
-but get a different value and that is simply because the monte carlo simulation generates the estimate using randomly generated outcomes. increasing the number of
-simulations reduces sampling error however there is a possibility that since the simulations outcomes are random the prive converges onto another value thats 
+contains a mathematical or coding error, however since their model assumptions are the same the generated outcomes should converge to the theoretical option price unless there is a issue 
+within the 
+coding or the mathematics.
+it is also important to notice that randomness plays a part within the monte carlo simulation, you can run the same program with the same option parameters and same number or simulations ran
+but get a different value and that is simply because the monte carlo simulation generates the estimate using randomly generated outcomes increasing the number of
+simulations reduces sampling error however running more simulations cause individual random outcomes to have less of an affect on the estimate
 therefore a run with a thousand simulations may get lucky and get less absolute error than a run with 10000 simulations simply because were working with random
-outcomes 
-The mathematical idea is that the sampling variability generally decreases as the number of simulations increases. Under the usual assumptions, 
-the standard error decreases approximately in proportion to
+outcomes The mathematical idea is that the sampling variability generally decreases as the number of simulations increases. 
+Under the usual assumptions, the standard error decreases approximately in proportion to
 1 over sqrt m
 where M is the number of simulations.
 This means that multiplying the simulation count by 100 reduces the standard error by a factor of approximately 10, assuming the underlying payoff variance 
