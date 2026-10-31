@@ -8,6 +8,7 @@ which we got from the option parameters. this project had the aim of answering 3
  randomness can affect the final estimate
 
         1.the mathematical background and methodology
+   
        1.1 modelling stock prices using the Geometric Brownian Motion
        why stock prices are modelled are random processes and how, talk abt gbm and random shocks sigmasqrtdeltat times Z the gbm differential equation, whole thing where the gbm is in my code, and why we usedelta t and sqrrt delta t, explain Z
        1.2 Discretising time and simulating stock paths EXPLAIN WHY n=252 and why we do t/n  and how the code finds the stock price at the next time step using the current tiime step stock price
