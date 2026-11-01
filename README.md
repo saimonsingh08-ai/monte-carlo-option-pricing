@@ -8,9 +8,25 @@ which we got from the option parameters. this project had the aim of answering 3
  randomness can affect the final estimate
 
         1.the mathematical background and methodology
-   
        1.1 modelling stock prices using the Geometric Brownian Motion
-       why stock prices are modelled are random processes and how, talk abt gbm and random shocks sigmasqrtdeltat times Z the gbm differential equation, whole thing where the gbm is in my code, and why we usedelta t and sqrrt delta t, explain Z
+       how stock prices are modelled as random processes and why , talk abt gbm and random shocks sigmasqrtdeltat times Z the gbm differential equation, whole thing where the gbm is in my code, and why we usedelta t and sqrrt delta t, explain Z
+   stock prices within this project have been modelled as random processes to simulate a real stock market
+   as stocks prices can fluctuate randomly. we do this via the use of the exact GBM solution:
+\[
+S_{t+\Delta t}=S_t e^{\left(r-\frac{1}{2}\sigma^2\right)\Delta t+\sigma\sqrt{\Delta t}Z}
+
+\]  which is derived from the differential equation: 
+\[
+dS_t = rS_t\,dt+\sigma S_t\,dW_t
+\]  
+this model where s_t is the asset price at time t, and $S_{t+\Delta t}$ is the asset price at the next time 
+step. r is the risk free interest rate of 1.05 sigma is the volatiliy of 0.2 and delta t is the length of the 
+time step which is 1/252 in this model (this will be covered in the next subsection) and z is a standard normal
+random variable. z is particularly importan as it is the source of randomness inside of this model, since z is
+a standard normal random variable there is a higher probability of Z being a small value (around 0) and a 
+lower probability of being a larger value(greater than 2 and less than negative 2) this means that the model 
+will largely contain small shocks meaning the simulation will be largely comprised of continousmovement which 
+is not representative of a real market where we know that stock prices move in random ticks
        1.2 Discretising time and simulating stock paths EXPLAIN WHY n=252 and why we do t/n  and how the code finds the stock price at the next time step using the current tiime step stock price
        1.3 european call options and risk neutral pricing what the models tryna price and why future payoffs are discountwd, talk about the option parameters, talk abt volatility, risk neauteral pricing, and why we use r
        1.4 monte carlo estimation and sampling error Explain how the individual discounted payoffs are combined to produce one estimated option price.
