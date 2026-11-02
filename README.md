@@ -37,6 +37,19 @@ the shock  i will cover in section 1.2
 whereas z determines the direction of the shock volatility dictates the size of the shock. Stock volatility measures how much and how quickly a stock’s price fluctuates over time, reflecting the level of risk and uncertainty in the market therefore a large volatility greatly ampplifies the size of the shock whereas a 
 small volatility would do the opposite. a large volatility within stock option generally causes the price of the premium to be higher since the stock
 option has higher intrinsic value meaning the payoff can be very large. similarly the time step has a great affect on the intrinsic value of the stock, since the 
+larger the time to maturity of the stock the randomly simulated paths have a chance to go very high giving the asset a higher intrinsic value, due to a higher 
+time value and as the expiry date gets closer the time value continues to decrease until it reaches 0 meaning it can have 
+a very large payoff. it is important to notice that stocks with very high intrinsic values generally have a larger premium meaning a larger intrinsic value may 
+not necesarily mean the profit is much larger unless the payoff is very large and in the money. and a stock with a lower time to maturity or smaller time step 
+will have a lower intrinsic value since it has a smaller chance to be able 
+to have a very large surge in value. in this model we use t=1 and n=252 since were taking the time to be a year long and a year roughly has 252 trading days.
+and by doing t/n we get delta t=0.00396825 which is the length of each individual step, by deviding the total time to expiry into 252 steps were able to form an 
+entire 
+stock price path to the expiry date of the stock option, the exact gbm solution uses this to calculate the stock price at the next time step although u could technicall just calculate the value at expiry splitting each path into 252 steps allows you to generate stock prices throughout the year, visualise how stock prices can change over the course of a trading year and examine the effect of a large shock. and sincce the end result is already set increasing the number of trading steps just oncreases how detailed the path seems instead of increasing the accuracy of the estimated end price. delta t is found inside of the exact gbm solution at \[
+S_{t+\Delta t}=S_t e^{(r-\frac12\sigma^2)\Delta t+\sigma\sqrt{\Delta t}Z}
+\]
+
+
        1.3 european call options and risk neutral pricing what the models tryna price and why future payoffs are discountwd, talk about the option parameters, talk abt volatility, risk neauteral pricing, and why we use r
        1.4 monte carlo estimation and sampling error Explain how the individual discounted payoffs are combined to produce one estimated option price.
         NOTE TO MYSELF USE CHATGPT TO UNDERSTAND WHAT IS MEANT BY 1.4 AND 1.5 AFTER CAUSE I HAVE NO IDEA
