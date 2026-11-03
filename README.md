@@ -40,7 +40,7 @@ option has higher time value meaning the payoff can be very large since the stoc
 larger the time to maturity of the stock the randomly simulated paths have a chance to go very high giving the asset a higher potential payoff, and as the expiry date gets closer the time value continues to decrease until it reaches 0 meaning it can have 
 a very large payoff. it is important to notice that stocks with very high intrinsic values generally have a larger premium meaning a larger intrinsic value may 
 not necesarily mean the profit is much larger unless the payoff is very large and in the money. and a stock with a lower time to maturity or smaller time step 
-will have a lower intrinsic value since it has a smaller chance to be able 
+will have a lower time value since it has a smaller chance to be able 
 to have a very large surge in value.
 
 in this model we use t=1 and n=252 since were taking the time to be a year long and a year roughly has 252 trading days.
@@ -51,12 +51,12 @@ technicall just calculate the value at expiry splitting each path into 252 steps
 prices can change over the course of a trading year and examine the effect of a large shock. and sincce the end result is already set increasing the number of 
 trading steps just oncreases how detailed the path seems instead of increasing the accuracy of the estimated end price.
 the model can be split into to parts part A which is the predictable movement which predicts the expected movement of the stock at the next time step and part b 
-which is the random component which acts as a random shock via the use of Z when combining these 2 together within the gbm model to produce a simulated value of the 
+which is the random component which introduces a random shock via the use of Z when combining these 2 together within the gbm model to produce a simulated value of the 
 stock price at the next time step and will continue doing this until it hasnt reached the final estimated price. since part a \[
 S_{t+\Delta t}=S_t e^{(r-\frac12\sigma^2)\Delta t+\sigma\sqrt{\Delta t}Z}
 \] 
 
-consists of the predictable movement it contains dealta T (sigma and r will be covered in the next subsection) meaning if the time is quadrupled the expected 
+consists of the predictable movement it contains dealta T (sigma and r will be covered in the next subsection) meaning if the time step is quadrupled the expected 
 affect is also quadrupled. within our model since r=0.05 and sigma=0.2 the predictable component is 0.03(deltat) which is strictlly positive meaning theres a 
 positive drift so it pushes the stock value up however the reason the stock price isnt always necesarily increasing is due to the random component which can 
 cause the stock price to go up or down this is the reason we can have a lower value than we started with because the random component can outweigh the affect of 
