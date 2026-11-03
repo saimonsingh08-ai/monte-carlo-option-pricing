@@ -37,7 +37,7 @@ the shock  i will cover in section 1.2
 whereas z determines the direction of the shock volatility dictates the size of the shock. Stock volatility measures how much and how quickly a stock’s price fluctuates over time, reflecting the level of risk and uncertainty in the market therefore a large volatility greatly ampplifies the size of the shock whereas a 
 small volatility would do the opposite. a large volatility within stock option generally causes the price of the premium to be higher since the stock
 option has higher time value meaning the payoff can be very large since the stock has a larger possibility for a big payoff by increasing the range of random outcomes . similarly the time step can have a great affect on the intrinsic value of the stock by increasing the time value, since the 
-larger the time to maturity of the stock the randomly simulated paths have a chance to go very high giving the asset a higher intrinsic value, and as the expiry date gets closer the time value continues to decrease until it reaches 0 meaning it can have 
+larger the time to maturity of the stock the randomly simulated paths have a chance to go very high giving the asset a higher potential payoff, and as the expiry date gets closer the time value continues to decrease until it reaches 0 meaning it can have 
 a very large payoff. it is important to notice that stocks with very high intrinsic values generally have a larger premium meaning a larger intrinsic value may 
 not necesarily mean the profit is much larger unless the payoff is very large and in the money. and a stock with a lower time to maturity or smaller time step 
 will have a lower intrinsic value since it has a smaller chance to be able 
@@ -60,8 +60,8 @@ consists of the predictable movement it contains dealta T (sigma and r will be c
 affect is also quadrupled. within our model since r=0.05 and sigma=0.2 the predictable component is 0.03(deltat) which is strictlly positive meaning theres a 
 positive drift so it pushes the stock value up however the reason the stock price isnt always necesarily increasing is due to the random component which can 
 cause the stock price to go up or down this is the reason we can have a lower value than we started with because the random component can outweigh the affect of 
-the positive predictable drift. the random movements can cancel each other increasing uncertainty (the difficulty to predict the stock price due to random movement) and as u add more random movements the uncertainty 
-keeps increasing, but since the random movements partly cancel each other out uncertainty does not increase in a straight line. so if we increase the time step 4 
+the positive predictable drift. the random movements can partially cancel each other and as u add more random movements the uncertainty (the difficulty to predict the stock price due to random movement)
+keeps increasing , but since the random movements partly cancel each other out uncertainty does not increase in a straight line. so if we increase the time step 4 
 the predictable affect would also increase 4 fold since it uses delta t. however uncertainty and the  random affect would increase 2 fold since they scale with standard deviation which is the sqrt of delta t. so the predictable affect increases proportionally to the time step, whereas the random affect and the uncertainty increase to the square root of the time step so uncertainty keeps increasing at a decreasing rate. its important to note that this is what
 is expected of the stock and the stock may not follow this pattern, uncertainty just means there is a wider variety of possible paths for them to take
 
