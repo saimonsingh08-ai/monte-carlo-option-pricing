@@ -45,10 +45,23 @@ will have a lower intrinsic value since it has a smaller chance to be able
 to have a very large surge in value. in this model we use t=1 and n=252 since were taking the time to be a year long and a year roughly has 252 trading days.
 and by doing t/n we get delta t=0.00396825 which is the length of each individual step, by deviding the total time to expiry into 252 steps were able to form an 
 entire 
-stock price path to the expiry date of the stock option, the exact gbm solution uses this to calculate the stock price at the next time step although u could technicall just calculate the value at expiry splitting each path into 252 steps allows you to generate stock prices throughout the year, visualise how stock prices can change over the course of a trading year and examine the effect of a large shock. and sincce the end result is already set increasing the number of trading steps just oncreases how detailed the path seems instead of increasing the accuracy of the estimated end price.
-the model can be split into to parts part A which is the predictable movement which predicts the expected movement of the stock at the next time step and part b which is the random component which acts as a random shock via the use of Z when adding these 2 together within the gbm model u get the expected value of the stock price at the next time step and will continue doing this until it hasnt reached the final estimated price. since part a \[
+stock price path to the expiry date of the stock option, the exact gbm solution uses this to calculate the stock price at the next time step although u could 
+technicall just calculate the value at expiry splitting each path into 252 steps allows you to generate stock prices throughout the year, visualise how stock 
+prices can change over the course of a trading year and examine the effect of a large shock. and sincce the end result is already set increasing the number of 
+trading steps just oncreases how detailed the path seems instead of increasing the accuracy of the estimated end price.
+the model can be split into to parts part A which is the predictable movement which predicts the expected movement of the stock at the next time step and part b 
+which is the random component which acts as a random shock via the use of Z when adding these 2 together within the gbm model u get the expected value of the 
+stock price at the next time step and will continue doing this until it hasnt reached the final estimated price. since part a \[
 S_{t+\Delta t}=S_t e^{(r-\frac12\sigma^2)\Delta t+\sigma\sqrt{\Delta t}Z}
-\] consists of the predictable movement it contains dealta T (sigma and r will be covered in the next subsection) meaning if the time is quadrupled the expected affect is also quadrupled within our model since r=0.05 and sigma=0.2 the predictable component is 0.03(deltat) which is strictlly positive meaning theres a positive drift so it pushes the stock value up however the reason the stock price isnt always necesarily increasing is due to the random component which can cause the stock price to go up or down.
+\] consists of the predictable movement it contains dealta T (sigma and r will be covered in the next subsection) meaning if the time is quadrupled the expected 
+affect is also quadrupled. within our model since r=0.05 and sigma=0.2 the predictable component is 0.03(deltat) which is strictlly positive meaning theres a 
+positive drift so it pushes the stock value up however the reason the stock price isnt always necesarily increasing is due to the random component which can 
+cause the stock price to go up or down this is the reason we can have a lower value than we started with because the random component can outweigh the affect of 
+the positive predictable drift. the random movements can cancel each other increasing uncertainty (the difficulty to predict the stock price due to random movement) and as u add more random movements the uncertainty 
+keeps increasing, but since the random movements partly cancel each other out uncertainty does not increase in a straight line. so if we increase the time step 4 
+the predictable affect would also increase 4 fold since it uses delta t. however uncertainty and the  random affect would increase 2 fold since they scale with standard deviation which is the sqrt of delta t. so the predictable affect increases proportionally to the time step, whereas the random affect and the uncertainty increase to the square root of the time step so uncertainty keeps increasing at a decreasing rate. its important to note that this is what
+is expected of the stock and the stock may not follow this pattern, uncertainty just means there is a wider variety of possible paths for them to take
+
 
 
        1.3 european call options and risk neutral pricing what the models tryna price and why future payoffs are discountwd, talk about the option parameters, talk abt volatility, risk neauteral pricing, and why we use r
