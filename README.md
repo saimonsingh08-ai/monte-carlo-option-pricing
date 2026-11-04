@@ -76,7 +76,9 @@ and gets a 20 pound payoff and if the buyer does not exercisee theyre right if t
 \[
 C_T=\max(S_T-K,0)
 \]
-this is the formula for calculating payoff at expiry, C_T is payoff at expiry, S_T is the stock price at expiry and K is the strike pricee further important note is that the paayoff is not the premium since a stock could have a large payoff buy if the stock is not in the money the premium may be large enough that the buyer does not gain any profit. the premium is the price of the financcial contract.
+this is the formula for calculating payoff at expiry, C_T is payoff at expiry, S_T is the stock price at expiry and K is the strike pricee further important note is that the paayoff is not the premium since a stock could have a large payoff buy if the stock is not in the money the premium may be large enough that the buyer does not gain any profit. the premium is the price of the financcial contract. and were calculating how to price an option premium today we do this via 
+simulating the option payoff at expiry of a stock we have simulated 100000 times getting the option values of these simulated paths and then each payoff to 
+how much its value would be today then we take the average of all the discounted payoffs to find a suitable option premium price today   
        1.4 monte carlo estimation and sampling error Explain how the individual discounted payoffs are combined to produce one estimated option price.
         NOTE TO MYSELF USE CHATGPT TO UNDERSTAND WHAT IS MEANT BY 1.4 AND 1.5 AFTER CAUSE I HAVE NO IDEA
         Include:
