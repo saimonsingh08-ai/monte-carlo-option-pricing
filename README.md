@@ -86,7 +86,9 @@ giving us a consistent no arbitrage price so going with our example an option wi
 since this is risk neuteral pricing we discount the future payoff using r and after averaging the discounted payoffs we can estimate the options
 price today.
 
-another factor which can affect the options premium is volatility, a large volatility means a stock can have a wider range of possible simulated paths to take there fore meaning that the stock option has a chance to 
+another factor which can affect the options premium is volatility, a large volatility means a stock can have a wider range of possible simulated paths to take there fore meaning that the stock option has a greater chance to rise very highly above the strike price but this also means that there is a very large chance 
+that the stock option price could go very much below the strike price. however since this is a european call option you cannot have a payoff below 0 pounds since
+if after the year the stock price falls below the stock price u can just buy the stock at the market price since the contract gives u the right but not the obligation to buy the stock at the predetermined price meaning then the only loss you would be making is that of the premium
        1.4 monte carlo estimation and sampling error Explain how the individual discounted payoffs are combined to produce one estimated option price.
         NOTE TO MYSELF USE CHATGPT TO UNDERSTAND WHAT IS MEANT BY 1.4 AND 1.5 AFTER CAUSE I HAVE NO IDEA
         Include:
