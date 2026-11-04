@@ -68,6 +68,15 @@ is expected of the stock and the stock may not follow this pattern, uncertainty 
 
 
        1.3 european call options and risk neutral pricing what the models tryna price and why future payoffs are discountwd, talk about the option parameters, talk abt volatility, risk neauteral pricing, and why we use r
+the goal of this model is to price a european call option, a european call option is a financial contract which gives the buyer the right but not the obligation 
+to purchase an underlying asset at a predetermined price. in our model we have a european call option with a strike price of 100 and time to expiry being 1 year
+meaning 1 year from now were buying that call option for 100 pounds meaning that if the stock price at expiry is 120 pounds the buyer purchases the option at 100 
+and gets a 20 pound payoff and if the buyer does not exercisee theyre right if the stock for example ends up at 90 they get a payoff of 0 pounds 
+
+\[
+C_T=\max(S_T-K,0)
+\]
+this is the formula for calculating payoff at expiry, C_T is payoff at expiry, S_T is the stock price at expiry and K is the strike pricee further important note is that the paayoff is not the premium since a stock could have a large payoff buy if the stock is not in the money the premium may be large enough that the buyer does not gain any profit. the premium is the price of the financcial contract.
        1.4 monte carlo estimation and sampling error Explain how the individual discounted payoffs are combined to produce one estimated option price.
         NOTE TO MYSELF USE CHATGPT TO UNDERSTAND WHAT IS MEANT BY 1.4 AND 1.5 AFTER CAUSE I HAVE NO IDEA
         Include:
