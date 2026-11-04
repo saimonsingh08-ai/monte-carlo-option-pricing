@@ -78,7 +78,12 @@ C_T=\max(S_T-K,0)
 \]
 this is the formula for calculating payoff at expiry, C_T is payoff at expiry, S_T is the stock price at expiry and K is the strike pricee further important note is that the paayoff is not the premium since a stock could have a large payoff buy if the stock is not in the money the premium may be large enough that the buyer does not gain any profit. the premium is the price of the financcial contract. and were calculating how to price an option premium today we do this via 
 simulating the option payoff at expiry of a stock we have simulated 100000 times getting the option values of these simulated paths and then each payoff to 
-how much its value would be today then we take the average of all the discounted payoffs to find a suitable option premium price today   
+how much its value would be today then we take the average of all the discounted payoffs to find a suitable option premium price today, since we assumed r to be 0.05 if we had a stock worth 100 pounds one year from now in its discounted version aka its value today using \[
+PV=FV\times e^{-rT}
+\] the value of that stock today would be 95.12 pounds meaning that 95.12 pounds compounded continously from today would equate to 100 pounds from one year from 
+now we discount future payoffs using our risk free rate of 5% to find out what their value would be today so it can be compared to our starting stock price 
+giving us a consistent no arbitrage so going with out example an option with a payoff of £100 would be worth 95.12 pouds under this discounting framework
+theoretical price this is risk neuteral pricing so we discount the future 
        1.4 monte carlo estimation and sampling error Explain how the individual discounted payoffs are combined to produce one estimated option price.
         NOTE TO MYSELF USE CHATGPT TO UNDERSTAND WHAT IS MEANT BY 1.4 AND 1.5 AFTER CAUSE I HAVE NO IDEA
         Include:
