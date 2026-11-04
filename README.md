@@ -82,8 +82,11 @@ how much its value would be today then we take the average of all the discounted
 PV=FV\times e^{-rT}
 \] the value of that stock today would be 95.12 pounds meaning that 95.12 pounds compounded continously from today would equate to 100 pounds from one year from 
 now we discount future payoffs using our risk free rate of 5% to find out what their value would be today so it can be compared to our starting stock price 
-giving us a consistent no arbitrage so going with out example an option with a payoff of £100 would be worth 95.12 pouds under this discounting framework
-theoretical price this is risk neuteral pricing so we discount the future 
+giving us a consistent no arbitrage price so going with our example an option with a payoff of £100 would be worth 95.12 pounds under this discounting framework
+since this is risk neuteral pricing we discount the future payoff using r and after averaging the discounted payoffs we can estimate the options
+price today.
+
+another factor which can affect the options premium is volatility, a large volatility means a stock can have a wider range of possible simulated paths to take there fore meaning that the stock option has a chance to 
        1.4 monte carlo estimation and sampling error Explain how the individual discounted payoffs are combined to produce one estimated option price.
         NOTE TO MYSELF USE CHATGPT TO UNDERSTAND WHAT IS MEANT BY 1.4 AND 1.5 AFTER CAUSE I HAVE NO IDEA
         Include:
