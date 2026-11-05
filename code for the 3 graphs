@@ -78,32 +78,3 @@ plt.ylabel("Absolute error (£)")
 plt.grid(True)
 plt.show()
 
-# Graph 4: Standard error
-standard_errors = np.array([
-    np.std(payoffs[:n], ddof=1) / np.sqrt(n)
-    for n in sizes
-])
-
-plt.figure(figsize=(10, 5))
-plt.plot(sizes, standard_errors, marker="o", label="Estimated standard error")
-plt.plot(
-    sizes,
-    standard_errors[0] * np.sqrt(sizes[0] / sizes),
-    linestyle="--",
-    label="Expected 1/sqrt(M) trend"
-)
-plt.xscale("log")
-plt.yscale("log")
-plt.title("Graph 4: Standard Error vs Simulation Count")
-plt.xlabel("Number of simulations")
-plt.ylabel("Standard error (£)")
-plt.legend()
-plt.grid(True)
-plt.show()
-
-# Print results
-print("\nSimulation results")
-print(f"{'Simulations':>12} {'Price (£)':>12} {'Error (£)':>12} {'Std error (£)':>15}")
-
-for n, price, error, se in zip(sizes, prices, errors, standard_errors):
-    print(f"{n:>12,} {price:>12.4f} {error:>12.4f} {se:>15.4f}")
