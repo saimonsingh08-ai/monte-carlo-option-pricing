@@ -1,0 +1,109 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import math
+
+S0 = 100
+K = 100
+T = 1.0
+r = 0.05
+sigma = 0.20
+N = 252
+M = 100000
+
+def black_scholes_call(S0, K, T, r, sigma):
+    d1 = (math.log(S0 / K) + (r + sigma**2 / 2) * T) / (sigma * math.sqrt(T))
+    d2 = d1 - sigma * math.sqrt(T)
+
+    cdf = lambda x: 0.5 * (1 + math.erf(x / math.sqrt(2)))
+    return S0 * cdf(d1) - K * math.exp(-r * T) * cdf(d2)
+
+bs_price = black_scholes_call(S0, K, T, r, sigma)
+print(f"Black-Scholes price: £{bs_price:.4f}")
+
+# Generate simulated terminal stock prices
+rng = np.random.default_rng(42)
+Z = rng.standard_normal(M)
+ST = S0 * np.exp((r - sigma**2 / 2) * T + sigma * np.sqrt(T) * Z)
+payoffs = np.exp(-r * T) * np.maximum(ST - K, 0)
+
+# Graph 1: Stock price paths
+rng_paths = np.random.default_rng(7)
+dt = T / N
+shocks = rng_paths.standard_normal((30, N))
+increments = (r - sigma**2 / 2) * dt + sigma * np.sqrt(dt) * shocks
+paths = np.column_stack([
+    np.full(30, S0),
+    S0 * np.exp(np.cumsum(increments, axis=1))
+])
+
+plt.figure(figsize=(10, 5))
+for path in paths:
+    plt.plot(np.linspace(0, T, N + 1), path)
+plt.axhline(K, linestyle="--", label="Strike price (£100)")
+plt.title("Graph 1: Simulated Stock Price Paths")
+plt.xlabel("Time (years)")
+plt.ylabel("Stock price (£)")
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Graph 2: Price convergence
+running_prices = np.cumsum(payoffs) / np.arange(1, M + 1)
+
+plt.figure(figsize=(10, 5))
+plt.plot(np.arange(1, M + 1), running_prices)
+plt.axhline(bs_price, linestyle="--", label="Black-Scholes benchmark")
+plt.xscale("log")
+plt.title("Graph 2: Monte Carlo Price Convergence")
+plt.xlabel("Number of simulations")
+plt.ylabel("Estimated option price (£)")
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Calculate results at selected simulation counts
+sizes = np.array([100, 250, 500, 1000, 2500, 5000,
+                  10000, 25000, 50000, 100000])
+
+prices = running_prices[sizes - 1]
+errors = np.abs(prices - bs_price)
+
+# Graph 3: Pricing error
+plt.figure(figsize=(10, 5))
+plt.plot(sizes, errors, marker="o")
+plt.xscale("log")
+plt.title("Graph 3: Absolute Pricing Error")
+plt.xlabel("Number of simulations")
+plt.ylabel("Absolute error (£)")
+plt.grid(True)
+plt.show()
+
+# Graph 4: Standard error
+standard_errors = np.array([
+    np.std(payoffs[:n], ddof=1) / np.sqrt(n)
+    for n in sizes
+])
+
+plt.figure(figsize=(10, 5))
+plt.plot(sizes, standard_errors, marker="o", label="Estimated standard error")
+plt.plot(
+    sizes,
+    standard_errors[0] * np.sqrt(sizes[0] / sizes),
+    linestyle="--",
+    label="Expected 1/sqrt(M) trend"
+)
+plt.xscale("log")
+plt.yscale("log")
+plt.title("Graph 4: Standard Error vs Simulation Count")
+plt.xlabel("Number of simulations")
+plt.ylabel("Standard error (£)")
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Print results
+print("\nSimulation results")
+print(f"{'Simulations':>12} {'Price (£)':>12} {'Error (£)':>12} {'Std error (£)':>15}")
+
+for n, price, error, se in zip(sizes, prices, errors, standard_errors):
+    print(f"{n:>12,} {price:>12.4f} {error:>12.4f} {se:>15.4f}")
