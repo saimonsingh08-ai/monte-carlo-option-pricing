@@ -78,21 +78,37 @@ C_T=\max(S_T-K,0)
 \]
 this is the formula for calculating payoff at expiry, C_T is payoff at expiry, S_T is the stock price at expiry and K is the strike pricee further important note is that the paayoff is not the premium since a stock could have a large payoff buy if the premium is large enough the buyer may not gain any profit. the premium is the price of the financcial contract. and were calculating how to price an option premium today we do this via 
 simulating the option payoff at expiry of a stock we have simulated 100000 times getting the option values of these simulated paths and then each payoff to 
-how much its value would be today then we take the average of all the discounted payoffs to find a suitable option premium price today, since we assumed r to be 0.05 if we had a stock worth 100 pounds one year from now in its discounted version aka its value today using \[
-PV=FV\times e^{-rT}
-\] the value of that stock today would be 95.12 pounds meaning that 95.12 pounds compounded continously from today would equate to 100 pounds from one year from 
+how much its value would be today then we take the average of all the discounted payoffs to find a suitable option premium price today, since we assumed r to be 0.05 if we had a stock worth 95.12 pounds today the value of that stock 1 year from now would be 100 pounds meaning that 95.12 pounds compounded continously from today would equate to 100 pounds from one year from 
 now we discount future payoffs using our risk free rate of 5% to find out what their value would be today so its equivalence can be found today 
 giving us a consistent no arbitrage price so going with our example an option with a payoff of £100 would have a worth of 95.12 pounds in equivalence with today
 since this is risk neuteral pricing we discount the future payoff using r and after averaging the discounted payoffs we can estimate the options
-price today.
+price today. this whole method is known as risk neuteral option pricing risk-neutral pricing lets us price an option by using the risk-free rate as the expected return in our mathematical model, rather than trying to predict the stock's actual return.
 
 another factor which can affect the options premium is volatility, a large volatility means a stock can have a wider range of possible simulated paths to take 
-there fore meaning that the stock option increases probability for very large upwards or downwards movements. however since this is a european call option you 
+there fore meaning that the stock option increases potential for both very large upwards or downwards movements. however since this is a european call option you 
 cannot have a payoff below 0 pounds since
-if after the year the stock price falls below the stock price the buyer can choose not to exercise his right since the contract gives u the right but not the obligation to buy the stock at the predetermined price meaning then the only loss you would be making is that of the premium
+if after the year the stock price falls below the strike price the buyer can choose not to exercise his right since the contract gives u the right but not the obligation to buy the stock at the predetermined price meaning then the only loss you would be making is that of the premium. 
+
+these are the option parameters
+
+Parameter	Value	Meaning
+\(S_0\)	£100	Initial stock price
+\(K\)	£100	Strike price
+\(T\)	1 year	Time until expiry
+\(r\)	5%	Risk-free rate
+\(\sigma\)	20%	Annual volatility
+\(N\)	252	Time steps
+\(M\)	100,000	Simulations
+
+it is important to not that the stock is initially at the money since the initial stock price and strike price are the same, and these option parameters give a 
+monte carlo simulation premium of £10.4273 and a black scholes theoretical premium of £10.4506 where the absolute difference is £0.0233. furthermore it is 
+important that we use the absolute difference by using the mod function. doing this prevents 2 values one positive and one negative across 2 different 
+simulations to candcel each other out, e.g if you had one estimatre from a run as £11 and another as £9.9 the signed error is -0.0006 which makes it look like 
+the results are perfect and really close to the benchmark which we know is not the case which we can see is wrong as both vakues are very far from the benchmark 
+where as in reality the absolute error would be £0.55 since both estimnates are each 0.55 pounds away from the benchmark.
 
        1.4 monte carlo estimation and sampling error Explain how the individual discounted payoffs are combined to produce one estimated option price.
-        NOTE TO MYSELF USE CHATGPT TO UNDERSTAND WHAT IS MEANT BY 1.4 AND 1.5 AFTER CAUSE I HAVE NO IDEA
+        
         Include:
         - The sample mean of the discounted payoffs.
         - Why more simulations generally improve precision.
