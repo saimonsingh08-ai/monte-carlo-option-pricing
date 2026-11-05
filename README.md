@@ -70,25 +70,27 @@ is expected of the stock and the stock may not follow this pattern, uncertainty 
        1.3 european call options and risk neutral pricing what the models tryna price and why future payoffs are discountwd, talk about the option parameters, talk abt volatility, risk neauteral pricing, and why we use r
 the goal of this model is to price a european call option, a european call option is a financial contract which gives the buyer the right but not the obligation 
 to purchase an underlying asset at a predetermined price. in our model we have a european call option with a strike price of 100 and time to expiry being 1 year
-meaning 1 year from now were buying that call option for 100 pounds meaning that if the stock price at expiry is 120 pounds the buyer purchases the option at 100 
-and gets a 20 pound payoff and if the buyer does not exercisee theyre right if the stock for example ends up at 90 they get a payoff of 0 pounds 
+meaning 1 year from now we can buy that stock for 100 pounds meaning that if the stock price at expiry is 120 pounds the buyer purchases the option at 100 
+and gets a 20 pound payoff and if the buyer does not exercisee their right bc the stock falls short they would get no payoff 
 
 \[
 C_T=\max(S_T-K,0)
 \]
-this is the formula for calculating payoff at expiry, C_T is payoff at expiry, S_T is the stock price at expiry and K is the strike pricee further important note is that the paayoff is not the premium since a stock could have a large payoff buy if the stock is not in the money the premium may be large enough that the buyer does not gain any profit. the premium is the price of the financcial contract. and were calculating how to price an option premium today we do this via 
+this is the formula for calculating payoff at expiry, C_T is payoff at expiry, S_T is the stock price at expiry and K is the strike pricee further important note is that the paayoff is not the premium since a stock could have a large payoff buy if the premium is large enough the buyer may not gain any profit. the premium is the price of the financcial contract. and were calculating how to price an option premium today we do this via 
 simulating the option payoff at expiry of a stock we have simulated 100000 times getting the option values of these simulated paths and then each payoff to 
 how much its value would be today then we take the average of all the discounted payoffs to find a suitable option premium price today, since we assumed r to be 0.05 if we had a stock worth 100 pounds one year from now in its discounted version aka its value today using \[
 PV=FV\times e^{-rT}
 \] the value of that stock today would be 95.12 pounds meaning that 95.12 pounds compounded continously from today would equate to 100 pounds from one year from 
-now we discount future payoffs using our risk free rate of 5% to find out what their value would be today so it can be compared to our starting stock price 
-giving us a consistent no arbitrage price so going with our example an option with a payoff of £100 would be worth 95.12 pounds under this discounting framework
+now we discount future payoffs using our risk free rate of 5% to find out what their value would be today so its equivalence can be found today 
+giving us a consistent no arbitrage price so going with our example an option with a payoff of £100 would have a worth of 95.12 pounds in equivalence with today
 since this is risk neuteral pricing we discount the future payoff using r and after averaging the discounted payoffs we can estimate the options
 price today.
 
-another factor which can affect the options premium is volatility, a large volatility means a stock can have a wider range of possible simulated paths to take there fore meaning that the stock option has a greater chance to rise very highly above the strike price but this also means that there is a very large chance 
-that the stock option price could go very much below the strike price. however since this is a european call option you cannot have a payoff below 0 pounds since
-if after the year the stock price falls below the stock price u can just buy the stock at the market price since the contract gives u the right but not the obligation to buy the stock at the predetermined price meaning then the only loss you would be making is that of the premium
+another factor which can affect the options premium is volatility, a large volatility means a stock can have a wider range of possible simulated paths to take 
+there fore meaning that the stock option increases probability for very large upwards or downwards movements. however since this is a european call option you 
+cannot have a payoff below 0 pounds since
+if after the year the stock price falls below the stock price the buyer can choose not to exercise his right since the contract gives u the right but not the obligation to buy the stock at the predetermined price meaning then the only loss you would be making is that of the premium
+
        1.4 monte carlo estimation and sampling error Explain how the individual discounted payoffs are combined to produce one estimated option price.
         NOTE TO MYSELF USE CHATGPT TO UNDERSTAND WHAT IS MEANT BY 1.4 AND 1.5 AFTER CAUSE I HAVE NO IDEA
         Include:
