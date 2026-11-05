@@ -117,8 +117,22 @@ where as in reality the absolute error would be £0.55 since both estimnates are
         This provides the mathematical foundation for Graphs 2 and 3.
 to find the option price today we dicount the future payoffs and average them across all the run simulations to get the option price today to discount them we
 use the risk free interest rate of 0.05 and times is by the time to expiry however since the time to expiry is one year we would just get 0.05, and to
-average all the ran simulations we just find the mean of them shown in the code by np.mean(payoffs) and by multiplying this by the discount factor/risk free interest rate, we get the discounted mean option price of today. this has been done acriss all the different simulations ran from 10-100000 this gives us a reliable option price for today. we got the monte carlo estimate of 10.4273 via this method, the 10.4273 represents a mean discounted option price given to us 
-from a simulation of 3 different programs running 100000 simulation paths, 
+average all the ran simulations we just find the mean of them shown in the code by np.mean(payoffs) and by multiplying this by the discount factor \[
+e^{-rT}
+\]  where r = 0.05 and t =1, we get the discounted mean option price of today. this has been done acriss all the different simulations ran from 10-100000 this gives us a 
+reliable option price for today. we got the monte carlo estimate of £10.4245 via this method, the £10.4245 (not to be confused with the value of £10.4273 which we got from the set seed in the code) represents a mean discounted option price given to us 
+from a simulation of 3 different programs running 100000 simulation paths, the more simulation paths that are run generally the higher the precision of your
+results, this is due to the law of large numbers where in the context of this project the more simulations u run the more the results woule converge to one value
+that value in this project being the black sholes theoretical option price benchmark.  In probability theory, the law of large numbers is a mathematical law 
+which states that the average of the results obtained from a large number of independent random samples converges to the true value, if it exists. More formally, 
+the law of large numbers states that given a sample of independent and identically distributed values, the sample mean converges to the true mean. although this 
+doesnt guarantee that every increase causes the runs to get more accurate due to fluctuations caused by randomness . random sampling may cause absolute error to increase 
+between simulation runs. this is also why in simulation runs with less simulations the 
+absolute error can be so high since 1 outlier can greatly affect the absolute error this will also be seen in graph 3 later within this subsection.
+
+standard error measures the sampling uncertainty of the monte carlo estimate wherewas the absolute arror measures how far my montecarlo estimate is from the black scholes benchmark both ignoring whether the affect is poisitive or negative. standard error decreases as the number of simulations increases (\(1/\sqrt M\))
+because averaging a larger number of independent simulated payoffs reduces the sampling variability of the estimated mean.
+
        1.5 black scholes theoretical price and benchmark
            Explain the analytical pricing formula and how you obtain the theoretical price of £10.4506.
 
