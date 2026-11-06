@@ -117,7 +117,10 @@ where as in reality the absolute error would be £0.55 since both estimnates are
         This provides the mathematical foundation for Graphs 2 and 3.
 to find the option price today we dicount the future payoffs and average them across all the run simulations to get the option price today to discount them we
 use the risk free interest rate of 0.05 and times is by the time to expiry however since the time to expiry is one year we would just get 0.05, and to
-average all the ran simulations we just find the mean of them shown in the code by np.mean(payoffs) and by multiplying this by the discount factor \[
+average all the ran simulations we just find the mean of them shown in the code by np.mean(payoffs) (which represents this formula \[
+\bar X=\frac{1}{M}\sum_{i=1}^{M}X_i
+\])
+and by multiplying this by the discount factor \[
 e^{-rT}
 \]  where r = 0.05 and t =1, we get the discounted mean option price of today. this has been done acriss all the different simulations ran from 10-100000 this gives us a 
 reliable option price for today. we got the monte carlo estimate of £10.4245 via this method, the £10.4245 (not to be confused with the value of £10.4273 which we got from the set seed in the code) represents a mean discounted option price given to us 
