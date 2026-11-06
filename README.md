@@ -157,9 +157,25 @@ graph 3 on the other hand shows absolute difference which is the difference betw
 which is the modulus of the monte carlo estimate minus the black scholes benchmark and the reason for using absolute error and by extention modulus, is  because
 we dont want any positives and negatives cancelling each other out and Absolute error generally tends to decrease as the number of simulations increases because the sample mean converges towards the theoretical expected value. However, individual absolute errors can fluctuate due to random sampling. absolute error measures the difference between the mc estimate and the bc price and then averages this across all simulation runs within the same simulation, graph 2 shows convergence which graph 3 also partiallly shows but graph 3 mainly emphasises the acuracy of individual simulation runs incomparison with the bc benchmark
 
+        black scholes formula 
+the black scholes model formula is: 
 
+\[
+C=S_0N(d_1)-Ke^{-rT}N(d_2)
+\]
 
-       
+where by using the option parameters (found below) the model calculates a fair theoretical option price today producing the benchmark we used throughout this project of 
+£10.4506. the formula which is given can be split into 2 parts the first term and the second term
+
+Component	Meaning
+C	The theoretical option price today
+S_0	Current stock price (£100)
+K	Strike price (£100)
+r	Risk-free interest rate (0.05)
+T	Time until expiry (1 year)
+e^{-rT}	Discount factor
+N(d_1)	Cumulative standard normal probability evaluated at \(d_1\)
+N(d_2)	Cumulative standard normal probability evaluated at \(d_2\)
                                                         
 
         model aassumptions and limitations 
