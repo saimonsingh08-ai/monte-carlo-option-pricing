@@ -116,7 +116,8 @@ where as in reality the absolute error would be £0.55 since both estimnates are
         - The difference between standard error and absolute error.
         This provides the mathematical foundation for Graphs 2 and 3.
 to find the option price today we dicount the future payoffs and average them across all the run simulations to get the option price today to discount them we
-use the risk free interest rate of 0.05 and times is by the time to expiry however since the time to expiry is one year we would just get 0.05, and to
+use the risk free interest rate of 0.05 and times is by the time to expiry however since the time to expiry is one year we would just get \[
+e^{-rT}=e^{-0.05}=0.951229, and to
 average all the ran simulations we just find the mean of them shown in the code by np.mean(payoffs) (which represents this formula \[
 \bar X=\frac{1}{M}\sum_{i=1}^{M}X_i
 \])
@@ -126,7 +127,7 @@ e^{-rT}
 reliable option price for today. we got the monte carlo estimate of £10.4245 via this method, the £10.4245 (not to be confused with the value of £10.4273 which we got from the set seed in the code) represents a mean discounted option price given to us 
 from a simulation of 3 different programs running 100000 simulation paths, the more simulation paths that are run generally the higher the precision of your
 results, this is due to the law of large numbers where in the context of this project the more simulations u run the more the results woule converge to one value
-that value in this project being the black sholes theoretical option price benchmark.  In probability theory, the law of large numbers is a mathematical law 
+the sample mean converges towards the theoretical expected discounted payoff under the risk-neutral model. Under the same assumptions, this is the Black–Scholes price of £10.4506.  In probability theory, the law of large numbers is a mathematical law 
 which states that the average of the results obtained from a large number of independent random samples converges to the true value, if it exists. More formally, 
 the law of large numbers states that given a sample of independent and identically distributed values, the sample mean converges to the true mean. although this 
 doesnt guarantee that every increase causes the runs to get more accurate due to fluctuations caused by randomness . random sampling may cause absolute error to increase 
@@ -136,16 +137,27 @@ absolute error can be so high since 1 outlier can greatly affect the absolute er
 standard error measures the sampling uncertainty of the monte carlo estimate wherewas the absolute arror measures how far my montecarlo estimate is from the black scholes benchmark both ignoring whether the affect is poisitive or negative. standard error decreases as the number of simulations increases (\(1/\sqrt M\))
 because averaging a larger number of independent simulated payoffs reduces the sampling variability of the estimated mean.
 
-       1.5 black scholes theoretical price and benchmark
-           Explain the analytical pricing formula and how you obtain the theoretical price of £10.4506.
+furthermore graph 2 is a visual representation of thew monte carlo simulation we see, as the number of simulations increases the presicion increases as sampling variability decreases The estimate generally converges towards the benchmark, improving its accuracy in the long run. and consistency of the 
+theoretical price in comparison to the benchmark increases however there are periods where the random shock causes the results to move further away from the 
+black scholes benchmark however the overall trend of the graph suggests convergence to the black scholes theoretical price. as mentioned previously its due to 
+the law of large numbers which states, with fewer simulation counts individual random movements have a greater influence pn the average payoff therefore as the 
+number of simulation increases the influence of those singular random movements decreases and the average estimate becomes a more clear representation of
+the true mean. and convergence is not always linear or smooth as i mentioned before as an estimate with 100 simulations could be closer to the benchmark than an
+estimate with 1000 simulations but the one with 1000 simulations would still have lower standard error it would just be affected by random variation. convergence 
+refers to approaching a limit closer as the number of simulations increases which is what we generally see in the graph and thats due to the law of large 
+numbers, which explains that increasing the number of simulations increases the stability as there is a lower chance for individual results to greatly influence 
+the payoff.
 
-        Include:
-        - The Black–Scholes call pricing formula.
-        - The meaning of its components.
-        - The option parameters used to calculate the benchmark.
-        - Why it provides a comparison for the Monte Carlo estimate.
+graph 3 on the other hand shows absolute difference which is the difference between the black scholes benchmark and the average monte carlo payoff that we get this graph gives a visual representation of how absolute error decreases as more simulations are run. the formula for absolutre error is:
 
-        CHECK THE BOOK WHEN GOING THROUGH 1.1, 1.2,1.3,1.5
+\[
+\text{Absolute Error}=|\text{MC estimate}-\text{BS price}|
+\] 
+
+which is the modulus of the monte carlo estimate minus the black scholes benchmark and the reason for using absolute error and by extention modulus, is  because
+we dont want any positives and negatives cancelling each other out and Absolute error generally tends to decrease as the number of simulations increases because the sample mean converges towards the theoretical expected value. However, individual absolute errors can fluctuate due to random sampling. absolute error measures the difference between the mc estimate and the bc price and then averages this across all simulation runs within the same simulation, graph 2 shows convergence which graph 3 also partiallly shows but graph 3 mainly emphasises the acuracy of individual simulation runs incomparison with the bc benchmark
+
+
 
        
                                                         
