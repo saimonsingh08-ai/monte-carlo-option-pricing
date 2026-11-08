@@ -164,8 +164,28 @@ the black scholes model formula is:
 C=S_0N(d_1)-Ke^{-rT}N(d_2)
 \]
 
-where by using the option parameters (found below) the model calculates a fair theoretical option price today producing the benchmark we used throughout this project of 
-£10.4506. the formula which is given can be split into 2 parts the first term and the second term
+where d_1 and d_2 can be found out using these formulas:
+
+
+d_1=
+\frac{\ln(S_0/K)+(r+\frac12\sigma^2)T}
+{\sigma\sqrt T}
+
+
+
+d_2=d_1-\sigma\sqrt T
+
+
+the formula which is given can be split into 2 parts the first term and the second term where by using the option parameters (found below) the model calculates a fair theoretical option price today producing the benchmark we used throughout this project of 
+£10.4506. the 1st term {S_0N(d_1)} represents the possible payoff which can be made from the share, the model factors in uncertainty and formulates where the 
+stock value could go. thh second term {Ke^{-rT}N(d_2)} represents the cost of buying the share which we have adjusted by factoring in the fact that you only
+pay for the premium at expire and the value we are given is discounted since the oayment happens in the future thus the discounting factors oresent and we 
+subtract them from one and another since the value of the option comes from subtracting the potential benefit from the cost/ a theoretical premium, furthermore 
+there is no need to use Z as we did in the monte carlo part of the project as were not running simulations to find an estimate instead were using the option 
+parameters to form a reliable theoretical option price value. the role of d1 and d2 is to account for uncertainty in both terms of the equation, d1 does this by 
+factoring in all the option parameters and combining them to one mathematical value of 0.35 since we cannot predict where the stock could end up in a year and using the d2 formula we get that d_2 is 0.15. and bt entering these values into the formula along w the option parameters we get thst the 1st term is equal to £63.68 and the 2nd term is £53.23 which once subtracted give us our benchmark of £10.45
+
+
 
 Component	Meaning
 C	The theoretical option price today
@@ -174,8 +194,8 @@ K	Strike price (£100)
 r	Risk-free interest rate (0.05)
 T	Time until expiry (1 year)
 e^{-rT}	Discount factor
-N(d_1)	Cumulative standard normal probability evaluated at \(d_1\)
-N(d_2)	Cumulative standard normal probability evaluated at \(d_2\)
+N(d_1)	Cumulative standard normal probability evaluated at d_1
+N(d_2)	Cumulative standard normal probability evaluated at d_2
                                                         
 
         model aassumptions and limitations 
