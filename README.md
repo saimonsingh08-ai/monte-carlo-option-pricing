@@ -183,7 +183,7 @@ for uncertainty), the model factors in uncertainty and formulates where the
 stock value could go. thh second term {Ke^{-rT}N(d_2)} represents the strike price of the stock being discounted thus the discounting factors oresent and after 
 subtracting them from each other we get C which is the theoretical premium, furthermore 
 there is no need to use Z as we did in the monte carlo part of the project as were not running simulations to find an estimate instead were using the option 
-parameters to form a reliable theoretical option price value. within the black scholes formula you have d1 and d2 which can be both worked out by substituting in the option parameters into the formulas above once you do that you would get d_1= 0.35 and d_2 = 0.15 
+parameters to form a reliable theoretical option price value. within the black scholes formula you have d1 and d2 which can be both worked out by substituting in the option parameters into the formulas above once you do that you would get d_1= 0.35 and d_2 = 0.15 which are mathematical intermediates which are substituted into a normal distribution with mean 0 and standard deviation 1 aka the z distribution. the Z distribution is used since the black scholes uses the standard normal distribution, why the normal distribution? since the GBM we have used in this project also uses normal distribution to find random values of Z and the black scholes model also asumes the stock prices to follow the GBM. this allows the black scholes to also account for uncertainty since randomness is also accounted for due to the normal distribution
 
 
 Component	Meaning
