@@ -258,4 +258,10 @@ M = 100_000 # Number of simulated paths
 generally the model found that increasing the number of simulations ran decreased the sampling error and variability making the results more stable and
 consistent since there was a lower chance for individual random results to greatly affect the overall trend. however increasing the number of simulations 
 does not always decrease the absolute error since the averages can still show difference from the benchmark due to randomness. ps the model simulates stock 
-prices to estimate the option price, it does not predict the price of the stock itself
+prices to estimate the option price, it does not predict the price of the stock itself.
+
+why use the monte carlo simulation if we know that the black scholes model gives a reliable stock option price?
+
+the point of this project was not to simply calculate the option price since otherwise there would be no need for the monte carlo simulation to be ran since the black scoles can find a reliable theoretical option price relatively easily instead the monte carlo simulation was used to investigate:
+how simulation based pricing can estimate an options value reliably, we did this via the use of the monte carlo simulation which via running a bunch of simulation paths we got otion prices across many simulation runs and by averaging all the simulation paths and discounting them we get a reliable premium for the stock option today and to check whether the results were relible we compared the results against the black scholes model for accuraccy and consistency
+
