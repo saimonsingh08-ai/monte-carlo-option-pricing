@@ -47,30 +47,41 @@ large shocks are observed but the model is not able to replicate these.
      1.2 Discretizing time and simulating stock paths 
  
 
-Where z determines the direction of the shock, volatility dictates the size of the shock. Stock volatility measures how much and how quickly a stock’s price 
-fluctuates over time, reflecting the level of risk and uncertainty in the market therefore a large volatility amplifies the size of the shock whereas a small 
-volatility would do the opposite. a large volatility within stock option generally causes the price of the premium to be higher since the stock option has higher 
-time value meaning the payoff can be very large since the stock has a larger possibility for a big payoff by increasing the range of random outcomes. similarly, 
-the time step can have a great effect on the intrinsic value of the stock by increasing the time value, since the larger the time to maturity of the stock the 
-randomly simulated paths have a chance to go very high giving the asset a higher potential payoff, and as the expiry date gets closer the time value continues to 
-decrease until it reaches 0 meaning it can have a very large payoff. It is important to notice that stocks with extremely high intrinsic values have a larger 
-premium, meaning a larger intrinsic value may not necessarily mean the profit is much larger unless the payoff is exceptionally large and in the money. and a 
+Stock volatility measures how much and how quickly a stock’s price 
+fluctuates over time therefore reflecting the level of risk and uncertainty in the market thus a large volatility amplifies the size of the shock whereas a small 
+volatility would do the opposite. A large volatility within a stock option generally causes the price of the premium to be higher since the stock option has 
+a higher 
+time value meaning the payoff can be very large since there a wider range of possible outcomes for the paths to take. Similarly, 
+the time step can have a great effect on the intrinsic value of the stock causing the time value to increase, since the larger the time to maturity of the stock 
+the 
+randomly simulated estimates a chance to go very high giving the asset a potentially higher payoff. Furthermore, as the expiry date gets closer the time value 
+continues to decrease until it reaches 0. It is important to notice that stocks with extremely high time values have a larger 
+premium, meaning a larger intrinsic value may not necessarily mean the profit is much larger unless the payoff is exceptionally large. A
 stock with a lower time to maturity or smaller time step will have a lower time value since it has a smaller chance to be able to have an exceptionally large 
 surge in value. 
 
-in this model we use t=1 and n=252 since were taking the time to be a yearlong and a year has 252 trading days. and by doing t/n we get delta t=0.00396825 which 
-is the length of each individual step, by dividing the total time to expiry into 252 steps were able to form an entire stock price path to the expiry date of the 
-stock option, the exact gbm solution uses this to simulate the stock price at the next time step although u could technical just calculate the value at expiry 
-splitting each path into 252 steps allows you to generate stock prices throughout the year, visualize how stock prices can change over the course of a trading 
-year and examine the effect of a large shock. and since the result is already set to increase, the number of trading steps just increases how detailed the path 
-seems instead of increasing the accuracy of the estimated end price. the model can be split into two parts part A which is the predictable movement which 
-predicts the expected movement of the stock at the next time step and part b which is the random component which introduces a random shock via the use of Z when 
-combining these 2 together within the gbm model to produce a simulated value of the stock price at the next time step and will continue doing this until it 
-hasn't reached the final estimated price. since part a [ _ {{t+\Delta t}=S_t e^{(r-\frac12\sigma^2) \Delta t+\sigma\sqrt {\Delta t} Z}] 
+Within this model we use t=1 and n=252 since were taking the time to be a yearlong and a year has 252 trading days. and by doing t/n we get delta t=0.00396825 
+which 
+is the length of each individual step, by dividing the total time to expiry into 252 steps we're able to form an entire stock price path to the expiry date of 
+the 
+stock option. The exact GBM solution uses this to simulate the stock price at the next time step. Although you could technically just calculate the value at 
+expiry 
+splitting each path into 252 steps allows you to generate stock prices throughout the year and visualize how stock prices can change over the course of a trading 
+year allowing you to examine the effect of a large shock. Since the estimate can be estimate even without splitting the trading year into 252 steps, the number 
+of trading steps just allows us to see a more detailed path rather than just calculating the end option price. The exact GBM model solution can be split into two 
+parts part A which 
+is the predictable movement which 
+predicts the expected movement of the stock at the next time step and part b which is the random component which introduces a random shock via the use of Z. When 
+combining these 2 together within the GBM model to produce a simulated value of the stock price at the next time step and will continue doing this until it 
+hasn't reached the final estimated price. Since part A of the GBM model solution:
 
-consists of the predictable movement it contains dealta T (sigma and r will be covered in the next subsection) meaning if the time step is quadrupled the 
-expected However, this comparison is about the scaling of the drift and random terms in the exponent, not a guarantee that the stock price itself moves by those 
-exact amounts. affect is also quadrupled. within our model since r=0.05 which is the expected stock growth rate and sigma=0.2 the predictable component is 
+{{t+\Delta t}=S_t e^{(r-\frac12\sigma^2) \Delta t+\sigma\sqrt {\Delta t} Z
+
+consists of the predictable movement it contains the constant delta T (sigma and r will be covered in the next subsection) meaning if the time step is quadrupled 
+the 
+expected return is also quadrupled. However, this comparison is about the scaling of the drift and random terms in the exponent it is  not a guarantee that the 
+stock price itself moves by those 
+exact amounts. within our model since r=0.05 which is the expected stock growth rate and sigma=0.2 the predictable component is 
 0.03(deltat) which is strictly positive meaning there's a positive drift so it pushes the stock value up however the reason the stock price isn't always 
 necessarily increasing is due to the random component which can cause the stock price to go up or down this is the reason we can have a lower value than we 
 started with because the random component can outweigh the effect of the positive predictable drift. the random movements can partially cancel each other and as 
