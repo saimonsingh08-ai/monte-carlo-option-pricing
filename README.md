@@ -1,37 +1,48 @@
      Project Objective 
  
 
-Within this project I wanted to analyze how accurately and consistently a monte Carlo simulation can price a European call option when u have set option 
-parameters, and how the number of simulations that are run can affect its consistency. and to check its accuracy, we compared it to a black Scholes theoretical 
-price which we got from the option parameters. this project had the aim of answering 3 questions: 
+Within this project, I wanted to analyze how accurately and consistently a monte Carlo simulation can price a European call option when u have set option 
+parameters. I also wanted to see how the number of simulations that are run can affect the consistency of the answers. and to check its accuracy, we compared it 
+to a black Scholes theoretical 
+price which we got from entering the option parameters into the Black Scholes formula . This project had the aim of answering 3 questions: 
 
-How does increasing the number of simulations affect the consistency of the estimate we get from the monte Carlo simulation? 
+How does increasing the number of simulations affect the consistency of the Monte Carlo estimate? 
 
-how accurately can the estimate from the monte Carlo simulation reach the black Scholes theoretical option price of £10.4506 
+How accurately can the estimate from the monte Carlo simulation reach the black Scholes theoretical option price of £10.4506?
 
 How does the geometric Brownian motion affect the simulation? How does randomness affect the simulation and why? 
 
-    1.the mathematical background and methodology 
-         1.1 modelling stock prices using the Geometric Brownian Motion 
+    1.The mathematical background and methodology 
+         1.1 Modelling stock prices using the Geometric Brownian Motion 
  
 
-Stock prices within this project have been modeled as random processes to simulate a simplified mathematical representation of stock market behavior as stock 
-prices can fluctuate randomly. we do this via the use of the exact GBM solution: [ S_ {t+\Delta t}=S_t e^ {\left (r-\frac {1}{2} \sigma^2\right) \Delta 
-t+\sigma\sqrt {\Delta t} Z} 
+Stock prices within this project have been moddeled as random processes, to simulate a simplified mathematical representation of how the stock market behaves as 
+stock 
+prices can fluctuate randomly. We do this via the use of the exact GBM solution:
 
-] which is derived from the differential equation: [ dS_t = rS_t,dt+\sigma S_t,dW_t ] 
-this model where s_t is the current asset price at time t, and St+Δt is the asset price at the next time step. r is the risk-free interest rate of 0.05 sigma is 
-the volatility of 0.2, and delta t is the length of the time step which is 1/252 in this model (this will be covered in the next subsection), and z is a standard 
-normal random variable. z (mean of 0 SD of 1) is particularly important as it is the source of randomness inside of this model, since z is a standard normal 
+[ S_ {t+\Delta t}=S_t e^ {\left (r-\frac {1}{2} \sigma^2\right) \Delta 
+t+\sigma\sqrt {\Delta t} Z} 
+] 
+
+Which is derived from the differential equation: 
+
+dS_t = rS_t,dt+\sigma S_t,dW_t  
+
+Within this model where s_t is the current asset price at time t and St+Δt is the asset price at the next time step, r is the risk-free interest rate of 0.05 
+ and sigma represents
+the volatility of 0.2. deDlta t is the length of the time step which is 1/252 in this model (this will be covered in the next subsection), and z is a standard 
+normal random variable. Z has a mean of 0 SD of 1 and is particularly important as it is the source of randomness inside of this model. Since, z is a standard 
+normal 
 random variable there is a higher probability of Z being within one standard deviation from the mean (68% between -1 and 1) and a lower probability of being more 
 than 2 standard deviations out lower than -2 and higher than 2 (5%) this means that the model will largely contain small positive or negative shocks dependent on 
-the value of z also the simulation will be largely comprised of continuous movement since the gbm assumes stock prices to evolve overtime meaning if the stock 
-was to go from £10 to £10.01 it would go through every intermediate value which is not representative of a real market where we know that stock prices move in 
-random ticks. furthermore the gbm model assumes every shock to be independent of each other meaning a shock at the current time step doesn't affect the size of 
+the value of z. Furthermore, the simulation will be largely comprised of continuous movement since the GBM assumes stock prices to evolve overtime meaning if the 
+stock price 
+was to go from £10 to £10.01 it would go through every intermediate value. However in a real market we know that stock prices move in 
+random ticks thus the model is not the most accurate. The GBM model assumes every shock to be independent of each other meaning a shock at the 
+current time step doesn't affect the size of 
 the shock at the next step however it is important to not get confused as although in the model the shock directions are independent of each other it is 
-important to remember that the stock price at the next time step is still dependent on the current stock price within the model and in real life which is a 
-simplified version of the stock market where behaviors such as volatility clustering, small movements being followed by small and large shocks being followed by 
-large shocks are observed. 
+important to remember that the stock price at the next time step is still dependent on the current stock price. within a real market behaviors such as volatility clustering, small movements being followed by small and large shocks being followed by 
+large shocks are observed but the model is not able to replicate these.
 
      1.2 Discretizing time and simulating stock paths 
  
