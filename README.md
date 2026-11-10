@@ -312,5 +312,5 @@ the estimates closer to thebenchmark Practical applications: Monte Carlo is part
 pricing formula may not be available. in complicated deratives suchas those with less model assumptions the black scholes cannot be used as it is only useful 
 with specific model assumptions the monte carlo simulation can still be ran millions of simulated paths can still come together to form an 
 appropriate option price whereas a black scholes model could not price an european call option with multiple expiry points which a monte carlo model can do 
-provided you use an appropriate model.
+provided you use an appropriate model
 
