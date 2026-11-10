@@ -1,4 +1,4 @@
-Project Objective 
+     Project Objective 
  
 
 Within this project I wanted to analyze how accurately and consistently a monte Carlo simulation can price a European call option when u have set option 
@@ -11,8 +11,8 @@ how accurately can the estimate from the monte Carlo simulation reach the black 
 
 How does the geometric Brownian motion affect the simulation? How does randomness affect the simulation and why? 
 
-1.the mathematical background and methodology 
-1.1 modelling stock prices using the Geometric Brownian Motion 
+    1.the mathematical background and methodology 
+         1.1 modelling stock prices using the Geometric Brownian Motion 
  
 
 Stock prices within this project have been modeled as random processes to simulate a simplified mathematical representation of stock market behavior as stock 
@@ -33,8 +33,7 @@ important to remember that the stock price at the next time step is still depend
 simplified version of the stock market where behaviors such as volatility clustering, small movements being followed by small and large shocks being followed by 
 large shocks are observed. 
 
-  1.2 Discretizing time and simulating stock paths EXPLAIN WHY n=252 and why we do t/n  and how the code finds the stock price at the next time step using  
-   the current time step stock price and why we use delta t and sqrrt delta t, 
+     1.2 Discretizing time and simulating stock paths 
  
 
 Where z determines the direction of the shock, volatility dictates the size of the shock. Stock volatility measures how much and how quickly a stock’s price 
@@ -71,7 +70,7 @@ t. so the predictable affect increases proportionally to the time step, whereas 
 step so uncertainty keeps increasing at a decreasing rate. it is important to note that this is what is expected of the stock and the stock may not follow this 
 pattern, uncertainty just means there is a wider variety of paths for them to take 
 
-  1.3 European call options and risk neutral pricing 
+     1.3 European call options and risk neutral pricing 
  
 
 The goal of this model is to price a European call option; a European call option is a financial contract which gives the buyer the right but not the obligation 
@@ -110,7 +109,7 @@ simulations to cancel each other out, e.g. if you had one estimate from a run as
 like the results are perfect and really close to the benchmark which we know is not the case which we can see is wrong as both values are very far from the 
 benchmark whereas in reality the absolute error would be £0.55 since both estimates are each 0.55 pounds away from the benchmark. 
 
-  1.4 monte carol estimation and sampling error Explain how the individual discounted payoffs are combined to produce one estimated option price. 
+     1.4 monte carol estimation and sampling error 
      
  
  
@@ -160,10 +159,10 @@ the sample mean converges towards the theoretical expected value. However, indiv
 difference between one monte Carlo estimate and the black Scholes benchmark, graph 2 shows convergence which graph 3 also partially shows but graph 3 emphasizes 
 the accuracy of individual simulation runs in comparison with the black Scholes benchmark 
 
-   black Scholes formula  
+    Thlack Scholes formula  
  
 
-the black Scholes model formula is: 
+The black Scholes model formula is: 
 
 [ C=S_0N(d_1)-Ke^{-rT}N(d_2)] 
 
@@ -201,7 +200,7 @@ Component Meaning C The theoretical option price today S_0 Current stock price (
 
 [ C\approx. £10.4506] 
 
-   model assumptions and limitations  
+     model assumptions and limitations  
  
 
 limitations of this model are that the geometric Brownian motion assumes the random shocks to be normally distributed therefore a real market is not accurately 
@@ -224,7 +223,7 @@ this price is not guaranteed if it ran, instead it is a theoretical estimate mad
 simulation and check for the model's accuracy, if the 2 persistently show a large absolute error even after increasing the simulation count it may be indicative 
 of a mathematical/coding/calculation error. 
 
-Monte Carlo convergence. 
+    Monte Carlo convergence. 
  
 
 it is also important to notice that randomness plays a part within the monte Carlo simulation, you can run the same program with the same option parameters and 
@@ -236,7 +235,7 @@ to further investigate the consistency we have run each simulation at each count
 times check it now, are we missing any vital information is there anything else we can add, or anything we can change to this to link it back to the original 
 questions or is there no need to do that 
 
-Conclusion 
+    Conclusion 
  
 
 the main result i came to was that the monte Carlo simulation can accurately estimate the option price when compared to its black Scholes benchmark of £10.4506 
